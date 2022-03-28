@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+		<record id="view_jobsite_tree" model="ir.ui.view">
+			<field name="model">jobsite</field>
+			<field name="name">jobsite.tree</field>
+			<field name="arch" type="xml">
+				<tree>
+					<field name="name"/>
+					<field name="type"/>
+				</tree>
+			</field>
+		</record>
+
+		<record id="view_jobsite_create_form" model="ir.ui.view">
+			<field name="model">jobsite</field>
+			<field name="name">jobsite.form</field>
+			<field name="arch" type="xml">
+				<form>
+					<sheet>
+						<group>
+                            <field name="name"/>
+                            <field name="type"/>
+							<field name="note"/>
+							<field name="active" invisible="1"/>
+							<field name="status" invisible="1"/>
+						</group>
+					</sheet>
+				</form>
+			</field>
+		</record>
+
+		<record id="view_jobsite_search" model="ir.ui.view">
+			<field name="model">jobsite</field>
+			<field name="name">jobsite.search</field>
+			<field name="arch" type="xml">
+				<search>
+					<field name="name" filter_domain="[('name', 'ilike', self)]"></field>
+					<filter name="filter_IW" string="IWM" domain="[('type', '=', 'IWM')]"></filter>
+					<filter name="filter_T" string="Transport" domain="[('type', '=', 'T')]"></filter>
+					<filter name="filter_FR" string="FR" domain="[('type', '=', 'FR')]"></filter>
+					<filter name="filter_General" string="General" domain="[('type', '=', 'General')]"></filter>
+<!--					<filter name="filter_BF" string="B&ampF" domain="[('type', '=', 'B&ampF')]"></filter>-->
+					<separator/>
+					<filter name="filter_archived" string="Archived" domain="[('active', '=', False)]"></filter>
+					<group expand="0" string="Group By">
+						<filter string="Type" name="group_by_type" context="{'group_by':'type'}"></filter>
+						<filter string="Status" name="group_by_status" context="{'group_by':'type'}"></filter>
+					</group>
+				</search>
+			</field>
+		</record>
+
+
+
+</odoo>
