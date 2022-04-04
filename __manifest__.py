@@ -11,12 +11,14 @@
     'description': """
         It is an entity of location type which generates new leads.
     """,
-    'depends': [],
+    'depends': ['mail', 'crm'],
     'data': [
         'security/ir.model.access.csv',
         'views/menu.xml',
         'views/jobsite_list.xml',
-        'views/jobsite.xml'
+        'views/jobsite_iwm.xml',
+        'views/jobsite.xml',
+        'views/jobsite_lead.xml',
     ],
     'demo': [
     ],
