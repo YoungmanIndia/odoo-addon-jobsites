@@ -12,6 +12,13 @@
 			</field>
 		</record>
 
+		<record id="jobsite_all_tree_view" model="ir.actions.act_window.view">
+			<field name="sequence" eval="0"/>
+			<field name="view_mode">tree</field>
+			<field name="view_id" ref="view_jobsite_tree"/>
+			<field name="act_window_id" ref="jobsite_listing_action"/>
+		</record>
+
 <!--	<record id="view_jobsite_map" model="ir.ui.view">-->
 <!--			<field name="model">jobsite</field>-->
 <!--			<field name="name">jobsite.map</field>-->
@@ -26,17 +33,49 @@
 			<field name="arch" type="xml">
 				<form>
 					<sheet>
+						<div class="oe_button_box" name="button_box">
+						</div>
 						<group>
+							<field name="active" invisible="1"/>
+							<field name="status" invisible="1"/>
+							<field name="country_code" invisible="1"/>
+
 							<group>
 								<field name="name"/>
 								<field name="type"/>
 								<field name="note"/>
-								<field name="active" invisible="1"/>
-								<field name="status" invisible="1"/>
+								<field name="user_id" position="attributes">
+									<attribute name="options">{'no_create_edit': True, 'no_create': True}</attribute>
+								</field>
 							</group>
 
 							<group>
+								<label for="street" string="Address"/>
+								<div class="o_address_format">
+									<field name="street" placeholder="Street..." class="o_address_street"/>
+									<field name="street2" placeholder="Street 2..." class="o_address_street"/>
+									<field name="city" placeholder="City" class="o_address_city"/>
+									<field name="state_id" class="o_address_state" placeholder="State" options="{'no_open': True, 'no_create': True}" context="{'default_country_id': country_id}"/>
+									<field name="zip" placeholder="ZIP" class="o_address_zip"/>
+									<field name="country_id" placeholder="Country" class="o_address_country" options='{"no_open": True, "no_create": True}'/>
+								</div>
 
+								<label for="latitude" string="Coordinates"/>
+								<div>
+									<span>Lat : </span>
+									<field name="latitude" nolabel="1" class="oe_inline"/>
+									<span>, Long: </span>
+									<field name="longitude" nolabel="1" class="oe_inline"/>
+									<br/>
+									<span class="oe_inline">
+										<button
+											string="(refresh)"
+											name="geo_localize"
+											class="btn btn-link"
+											type="object"/>
+										<field name="marker_color" invisible="1"/>
+									</span>
+								</div>
 							</group>
 
 						</group>

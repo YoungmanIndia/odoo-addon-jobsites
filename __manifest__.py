@@ -11,7 +11,7 @@
     'description': """
         It is an entity of location type which generates new leads.
     """,
-    'depends': ['mail', 'crm'],
+    'depends': ['mail', 'crm', 'web_google_maps'],
     'data': [
         'security/ir.model.access.csv',
         'views/menu.xml',
@@ -19,6 +19,7 @@
         'views/jobsite_iwm.xml',
         'views/jobsite.xml',
         'views/jobsite_lead.xml',
+        'views/jobsite_map.xml',
     ],
     'demo': [
     ],
