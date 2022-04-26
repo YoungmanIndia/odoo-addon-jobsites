@@ -7,7 +7,7 @@
             <field name="inherit_id" ref="crm.crm_lead_view_form"/>
             <field name="arch" type="xml">
                 <field name="function" position="after">
-                    <field name="site_id" attrs="{'no_create_edit': True, 'no_create': True,'invisible': [('type','=', 'opportunity')]}"/>
+                    <field name="site_id" attrs="{'no_create_edit': True, 'no_create': True}"/>
                 </field>
             </field>
         </record>
