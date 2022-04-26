@@ -6,21 +6,20 @@
             <field name="model">crm.lead</field>
             <field name="inherit_id" ref="crm.crm_lead_view_form"/>
             <field name="arch" type="xml">
-                <field name="tag_ids" position="after">
-                    <field name="site_id"/>
+                <field name="function" position="after">
+                    <field name="site_id" attrs="{'no_create_edit': True, 'no_create': True,'invisible': [('type','=', 'opportunity')]}"/>
                 </field>
             </field>
         </record>
-
-        <record id="view_crm_lead_site_inherit" model="ir.ui.view">
-            <field name="name">crm.lead.site.inherit</field>
-            <field name="model">crm.lead</field>
-            <field name="inherit_id" ref="crm.crm_lead_view_form"/>
-            <field name="arch" type="xml">
-                <field name="site_id" position="attributes">
-                    <attribute name="options">{'no_create_edit': True, 'no_create': True}</attribute>
-                </field>
-            </field>
-        </record>
+<!--        <record id="view_crm_lead_site_inherit" model="ir.ui.view">-->
+<!--            <field name="name">crm.lead.site.inherit</field>-->
+<!--            <field name="model">crm.lead</field>-->
+<!--            <field name="inherit_id" ref="crm.crm_lead_view_form"/>-->
+<!--            <field name="arch" type="xml">-->
+<!--                <field name="site_id" position="attributes">-->
+<!--                    <attribute name="options">{'no_create_edit': True, 'no_create': True, 'type': 'lead'}</attribute>-->
+<!--                </field>-->
+<!--            </field>-->
+<!--        </record>-->
     </data>
 </odoo>
