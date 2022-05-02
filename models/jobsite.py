@@ -71,8 +71,8 @@ class Jobsite(models.Model):
 
         return True
 
-    class ResPartner(models.Model):
-        _inherit = 'res.partner'
-
-        marker_color = fields.Char(
-            string='Marker Color', default='red', required=True)
+    # class ResPartner(models.Model):
+    #     _inherit = 'res.partner'
+    #
+    #     marker_color = fields.Char(
+    #         string='Marker Color', default='red', required=True)
