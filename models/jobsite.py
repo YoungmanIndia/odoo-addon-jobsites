@@ -1,25 +1,21 @@
+import logging
+
 from odoo import api, fields, models
 
 
 class Jobsite(models.Model):
     _name = 'jobsite'
-    _inherit =['mail.thread', 'mail.activity.mixin', 'format.address.mixin']
+    _inherit = ['mail.thread', 'mail.activity.mixin', 'format.address.mixin']
     _description = "Jobsite"
 
     name = fields.Char(string='Site Name', required=True, translate=True, tracking=True)
-    type = fields.Selection([
-        ('General', 'General'),
-        ('IWM', 'IWM'),
-        ('T', 'Transport'),
-        ('B&F', 'B&F'),
-        ('FR', 'FR'),
-    ], required=True, default='General',
-        help="", tracking=True)
+    type = fields.Many2one(comodel_name='crm.team', string='Type')
+
     status = fields.Selection([
         ('Virgin', 'Virgin'),
         ('Active', 'Active'),
         ('Closed', 'Closed'),
-        ], string="Status",
+    ], string="Status",
         required=True, default='Virgin', help="", tracking=True)
     note = fields.Text(string='Description')
     active = fields.Boolean(string='isActive', default=True, tracking=True)
